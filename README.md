@@ -1,0 +1,1 @@
+# ongeki_rating_calc
