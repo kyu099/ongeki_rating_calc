@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>オンゲキレート計算機（仮）</title>
+        <script defer src="main.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h2>オンゲキレート計算機（仮）</h2>
+        <table>
+            <tr>
+                <td>目標レートを入力</td><td><input type="number" id="targetrating" min="0" max="1010000"></td>
+            </tr>
+            <tr>
+                <td>ベスト枠(30曲)平均レートを入力</td><td><input type="number" id="bestrating" min="0" max="1010000"></td>
+            </tr>
+            <tr>
+                <td>新曲枠(15曲)平均レートを入力</td><td><input type="number" id="newsongrating" min="0" max="1010000"></td>
+            </tr>
+        </table>
+        <br>
+        <button id="calc">計算</button>
+        <br>
+        <br>
+        <output id="out1"></output>
+        <br>
+        <br>
+        © 2023 股濡れ徒歩部
+    </body>
+</html>
