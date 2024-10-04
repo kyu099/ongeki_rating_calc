@@ -38,7 +38,6 @@ function calc_recentrating(){
     for(let i = 1; i<recentrating_values.length; i++){
         sum_recentrating_values[i] = sum_recentrating_values[i-1] + recentrating_values[i];
     }
-    console.log(sum_recentrating_values);
 
     out3.innerHTML="";
     for(let num in sum_recentrating_values) {
@@ -46,7 +45,7 @@ function calc_recentrating(){
         target = Math.round(target * 100) / 100;
         if(target > 0){
             out3.innerHTML += `あと${target}が${9-num}曲<br>`
-        } 
+        }
     }
     out3.innerHTML += "で目標達成！"
 }
@@ -63,7 +62,6 @@ addbutton.onclick = () => {
         if(recentrating_values.length >= 10){recentrating_values.pop()}
         recentrating_values.push(single_recentrating.value * 1);
         recentrating_values.sort((a, b) => b-a);
-        console.log(recentrating_values);
     }
     print_table()
     calc_recentrating()
