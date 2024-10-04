@@ -50,7 +50,7 @@ function calc_recentrating(){
             out3.innerHTML += `あと${target}が${9-num}曲<br>`
         }
     }
-    out3.innerHTML += "で目標達成！"
+    out3.innerHTML += "で目標レート達成！"
 }
 
 function addtable(rating){
