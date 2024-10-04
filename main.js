@@ -77,14 +77,12 @@ addrating.onclick = () => {
 }
 
 addscore.onclick = () => {
-    console.log("addscore.onclick")
     let rating = 0;
     if(recentscore.value >= 1007500){rating = recentconst.value*1 + 2;}
     if(recentscore.value < 1007500 && recentscore.value >= 1000000){rating = Math.floor(recentconst.value * 100 + 150 + (recentscore.value - 1000000)/150)/100;}
     if(recentscore.value < 1000000 && recentscore.value >= 970000){rating = Math.floor(recentconst.value * 100 + (recentscore.value - 970000)/200)/100;}
 
     addtable(rating);
-    console.log(rating);
 }
 
 resetbutton.onclick = () => {
