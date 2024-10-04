@@ -2,12 +2,15 @@ const calcbutton = document.getElementById("calc");
 const targetrating = document.getElementById("targetrating");
 const bestrating = document.getElementById("bestrating");
 const newsongrating = document.getElementById("newsongrating");
-const addbutton = document.getElementById("add");
+const addrating = document.getElementById("addrating");
+const addscore = document.getElementById("addscore");
 const single_recentrating = document.getElementById("recentrating");
 const out1 = document.getElementById("out1");
 const out2 = document.getElementById("out2");
 const out3 = document.getElementById("out3");
 const resetbutton = document.getElementById("reset");
+const recentconst = document.getElementById("recentconst");
+const recentscore = document.getElementById("recentscore");
 
 let sum_recentrating = 0;
 let recentrating_values = [];
@@ -50,21 +53,38 @@ function calc_recentrating(){
     out3.innerHTML += "で目標達成！"
 }
 
+function addtable(rating){
+    recentrating_values.sort((a, b) => b-a);
+    if(rating != null && rating != 0){
+        if(recentrating_values.length >= 10){recentrating_values.pop()}
+        recentrating_values.push(rating * 1);
+        recentrating_values.sort((a, b) => b-a);
+    }
+    print_table()
+    calc_recentrating()
+}
+
 calcbutton.onclick = () => {
     let recentrating = 0;
     recentrating = calc_targetrating(targetrating.value, bestrating.value, newsongrating.value)
     out1.innerHTML = `リーセント枠(10曲)の平均レート${recentrating}で目標レート達成！`;
 }
 
-addbutton.onclick = () => {
-    recentrating_values.sort((a, b) => b-a);
-    if(single_recentrating.value != null && single_recentrating.value != 0){
-        if(recentrating_values.length >= 10){recentrating_values.pop()}
-        recentrating_values.push(single_recentrating.value * 1);
-        recentrating_values.sort((a, b) => b-a);
-    }
-    print_table()
-    calc_recentrating()
+addrating.onclick = () => {
+    let rating = 0;
+    rating = Math.floor(single_recentrating.value * 100) / 100;
+    addtable(rating);
+}
+
+addscore.onclick = () => {
+    console.log("addscore.onclick")
+    let rating = 0;
+    if(recentscore.value >= 1007500){rating = recentconst.value*1 + 2;}
+    if(recentscore.value < 1007500 && recentscore.value >= 1000000){rating = Math.floor(recentconst.value * 100 + 150 + (recentscore.value - 1000000)/150)/100;}
+    if(recentscore.value < 1000000 && recentscore.value >= 970000){rating = Math.floor(recentconst.value * 100 + (recentscore.value - 970000)/200)/100;}
+
+    addtable(rating);
+    console.log(rating);
 }
 
 resetbutton.onclick = () => {
